@@ -13,10 +13,10 @@ open class ManagedObject: NSManagedObject, Genome.MappableBase {
     // MARK: EntityName
     
     open class var entityName: String {
-        return "\(self)"
-            .characters
+        let characters = Array("\(self)")
+        return characters
             .split { $0 == "." }
-            .map(String.init)
+            .map({ String($0) })
             .last ?? "\(self)"
     }
     

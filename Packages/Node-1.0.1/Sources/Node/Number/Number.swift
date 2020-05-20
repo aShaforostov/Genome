@@ -1,3 +1,5 @@
+import Foundation
+
 extension Node {
     public enum Number {
         case int(Int)
@@ -9,14 +11,15 @@ extension Node {
 // MARK: Initializers
 
 extension Node.Number {
-    public init<I: Integer>(_ value: I) {
-        let max = value.toIntMax()
+    public init<I: BinaryInteger>(_ value: I) {
+        
+        let max = UInt64(value)
         let int = Int(max)
         self = .int(int)
     }
 
     public init<U: UnsignedInteger>(_ value: U) {
-        let max = value.toUIntMax()
+        let max = UInt64(value)
         let uint = UInt(max)
         self = .uint(uint)
     }

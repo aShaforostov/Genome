@@ -106,7 +106,8 @@ extension Map {
     }
 
     public subscript(path path: String) -> Map {
-        let components = path.characters
+        let characters = Array(path)
+        let components = characters
             .split(separator: ".")
             .map { String($0) }
         return self[components]

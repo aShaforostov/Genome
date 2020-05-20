@@ -68,7 +68,8 @@ extension PathIndexable {
 extension PathIndexable {
     public subscript(path path: String) -> Self? {
         get {
-            let comps = path.characters.split(separator: ".").map(String.init)
+            let characters = Array(path)
+            let comps = characters.split(separator: ".").map({ String($0) })
             return self[comps]
         }
         set {
@@ -101,8 +102,9 @@ extension PathIndexable {
 
 extension String {
     internal func keyPathComponents() -> [String] {
+        let characters = Array(self)
         return characters
             .split(separator: ".")
-            .map(String.init)
+            .map({ String($0) })
     }
 }
